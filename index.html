@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Room</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+    	* {
+    	box-sizing: border-box;
+    	margin: 0;
+    	padding: 0;
+    	}
+    	
+    	body {
+    	font-family: sans-serif;
+    	}
+    	
+    	#chat-container {
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+    	align-items: center;
+    	height: 100vh;
+    	}
+    	
+    	#chat-header {
+    	background-color: #333;
+    	color: #fff;
+    	width: 100%;
+    	padding: 1rem;
+    	text-align: center;
+    	}
+    	
+    	#chat-messages {
+    	display: flex;
+    	flex-direction: column;
+    	align-items: flex-start;
+    	width: 100%;
+    	height: 100%;
+    	padding: 1rem;
+    	overflow-y: auto;
+    	}
+    	
+    	.message-container {
+    	display: flex;
+    	flex-direction: column;
+    	align-items: flex-start;
+    	margin-bottom: 1rem;
+    	}
+    	
+    	.message-info {
+    	font-size: 0.8rem;
+    	margin-bottom: 0.2rem;
+    	}
+    	
+    	.message-content {
+    	background-color: #f4f4f4;
+    	border-radius: 5px;
+    	padding: 0.5rem;
+    	}
+    	
+    	#chat-form {
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	width: 100%;
+    	padding: 1rem;
+    	background-color: #f4f4f4;
+    	border-top: 1px solid #333;
+    	}
+    	
+    	#message-input {
+    	flex: 1;
+    	padding: 0.5rem;
+    	border-radius: 5px;
+    	border: none;
+    	margin-right: 1rem;
+    	}
+    	
+    	button[type="submit"] {
+    	padding: 0.5rem 1rem;
+    	background-color: #333;
+    	color: #fff;
+    	border: none;
+    	border-radius: 5px;
+    	cursor: pointer;
+    	}
+    	
+    	button[type="submit"]:hover {
+    	background-color: #555;
+    	}
+    	@media only screen and (min-width: 601px) {
+    	#chat {
+    	display: flex;
+    	flex-direction: row;
+    	}
+    	#chat-display {
+    	width: 70%;
+    	}
+    	#chat-form {
+    	width: 30%;
+    	}
+    	}
+    	.message {
+    	border: 2px solid #ddd;
+    	border-radius: 0px 50px 50px 60px;
+    	margin-bottom: 10px;
+    	padding: 10px;
+    	animation: color-cycle 26s infinite;
+    	}
+    	@keyframes color-cycle {
+    	0% { background-color: rgba(244,55,46,0.5); }
+    	50% { background-color: rgba(44,155,46,0.5); }
+    	100% { background-color: rgba(244,55,146,0.5); }
+    	}
+    	#chat-form {
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	width: 100%;
+    	padding: 1rem;
+    	background-color: #f4f4f4;
+    	border-top: 1px solid #333;
+    
+    	}
+    	
+    	#chat-message {
+    	flex: 1;
+    	padding: 0.5rem;
+    	border-radius: 5px;
+    	border: none;
+    	margin-right: 1rem;
+    	}
+    </style>
+  </head>
+  <body>
+  <section id="chat">
+    <div id="chat-container">
+      <div id="chat-header">
+        <h1>Chat Room</h1>
+      </div>
+      <div id="chat-display"></div>
+      <form id="chat-form">
+        <input type="text" id="message-input" id="chat-message" placeholder="Type your message" />
+        <button type="submit">Send</button>
+      </form>
+      
+    </div>
+  </section>
+    <!-- Include jQuery and Bootstrap JS -->
+     <script >
+     
+     if (localStorage.getItem('sufev')) {
+     // if it is empty, do nothing
+     window.location.href = 'user.html';
+     } else {
+     // if it is not empty, redirect to the second page
+     
+     }
+     
+     
+     // Initialize Firebase
+     var config = {
+     aapiKey: "AIzaSyAy51n8WrsAy8R-xbXNanqL9AHQFPtuiZY",
+     authDomain: "sufev7852.firebaseapp.com",
+     databaseURL: "https://sufev7852-default-rtdb.firebaseio.com",
+     projectId: "sufev7852",
+     storageBucket: "sufev7852.appspot.com",
+     messagingSenderId: "733657119988"
+     };
+     firebase.initializeApp(config);
+     
+     // Get a reference to the Firebase database
+     var database = firebase.database();
+     
+     // Get a reference to the "messages" collection in the database
+     var messagesRef = database.ref("messages");
+     
+     // Listen for new messages and add them to the chat display
+     messagesRef.orderByChild("timestamp").on("child_added", function(snapshot) {
+     var message = snapshot.val();
+     var messageDisplay = "<div class='message'><p><strong>" + message.name + "</strong> (" + formatDate(new Date(message.timestamp)) + "):<br> " + message.text + "</p></div>";
+     document.getElementById("chat-display").innerHTML += messageDisplay;
+     });
+     
+     // Handle the form submission to add a new chat message
+     document.getElementById("chat-form").addEventListener("submit", function(event) {
+     event.preventDefault();
+     var message = document.getElementById("chat-message").value;
+     if (message) {
+     messagesRef.push({
+     name: localStorage.getItem('sufev'),
+     text: message,
+     timestamp: firebase.database.ServerValue.TIMESTAMP
+     });
+     document.getElementById("chat-message").value = "";
+     
+     }
+     
+     });
+     
+     // Format a date as a string (e.g. "3:30 PM on February 17, 2023")
+     function formatDate(date) {
+     var hours = date.getHours() % 12 || 12;
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? "PM" : "AM";
+     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+     var monthIndex = date.getMonth();
+     var day = date.getDate();
+     var year = date.getFullYear();
+     return hours + ":" + (minutes < 10 ? "0" : "") + minutes + " " + ampm + " on " + monthNames[monthIndex] + " " + day + ", " + year;
+     }
+    </script>
+  </body>
+</html>
