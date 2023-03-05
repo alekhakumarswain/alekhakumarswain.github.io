@@ -35,7 +35,8 @@
 	element.href = `${path}`;
 	element.rel = 'stylesheet';
 	document.head.append(element);
-	}									
+	}			
+        createLinkElementAndAppendInHead('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');						
 	createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/pop-script.css ');
 	document.body.insertAdjacentHTML('afterbegin', DOMString)				
 	const btnOk = document.querySelector('.close');
