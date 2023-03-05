@@ -23,7 +23,22 @@
 						SWAIN 
 				</b>
 			</b>				
-			<img  src="https://alekhakumarswain.github.io/flex.gif">			
+			<img  src="https://alekhakumarswain.github.io/flex.gif">
+			<a style="text-decoration:none;" href=" https://www.facebook.com/swainraja.kumaralekha " >
+							<div class="icon facebook"></div>
+						</a>
+						<a style="text-decoration:none;" href=" https://twitter.com/Alekha6868swain " >
+							<div class="icon twitter"></div>
+						</a>
+						<a style="text-decoration:none;" href=" https://www.instagram.com/alekha_kumar_swain_raja_6868/ " >						
+							<div class="icon instagram"></div>
+						</a>
+						<a style="text-decoration:none;" href=" https://www.linkedin.com/in/alekhakumar " >
+							<div class="icon linkedin"></div>
+						</a>
+						<a style="text-decoration:none;" href=" https://api.whatsapp.com/send?phone=8018226416 " >
+							<div class="icon whatsapp"></div>
+						</a>
 			<a href="https://alekhakumarswain.github.io" class="popup-alert-btn submit">VISIT NOW</a>
 			<a href="#" class="popup-alert-btn close">SKIP NOW</a>
 		
@@ -38,6 +53,7 @@
 	}			
         createLinkElementAndAppendInHead('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');						
 	createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/pop-script.css ');
+	createLinkElementAndAppendInHead(' https://alekhakumarswain.github.io/css/Icon.css ');
 	document.body.insertAdjacentHTML('afterbegin', DOMString)				
 	const btnOk = document.querySelector('.close');
 	btnOk.addEventListener('click', (e) => {
