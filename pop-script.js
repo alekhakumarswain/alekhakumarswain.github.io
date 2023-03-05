@@ -23,7 +23,7 @@
 						SWAIN 
 				</b>
 			</b>				
-			<img  src="Admin/script/flex.gif">			
+			<img  src="https://alekhakumarswain.github.io/flex.gif">			
 			<a href="https://alekhakumarswain.github.io" class="popup-alert-btn submit">VISIT NOW</a>
 			<a href="#" class="popup-alert-btn close">SKIP NOW</a>
 		
@@ -36,7 +36,7 @@
 	element.rel = 'stylesheet';
 	document.head.append(element);
 	}									
-	createLinkElementAndAppendInHead('pop-script.css ');
+	createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/pop-script.css ');
 	document.body.insertAdjacentHTML('afterbegin', DOMString)				
 	const btnOk = document.querySelector('.close');
 	btnOk.addEventListener('click', (e) => {
