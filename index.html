@@ -1,219 +1,198 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Chat Room</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="style.css" />
-    <style type="text/css">
-    	* {
-    	box-sizing: border-box;
-    	margin: 0;
-    	padding: 0;
-    	}
-    	
-    	body {
-    	font-family: sans-serif;
-    	}
-    	
-    	#chat-container {
-    	display: flex;
-    	flex-direction: column;
-    	justify-content: space-between;
-    	align-items: center;
-    	height: 100vh;
-    	}
-    	
-    	#chat-header {
-    	background-color: #333;
-    	color: #fff;
-    	width: 100%;
-    	padding: 1rem;
-    	text-align: center;
-    	}
-    	
-    	#chat-messages {
-    	display: flex;
-    	flex-direction: column;
-    	align-items: flex-start;
-    	width: 100%;
-    	height: 100%;
-    	padding: 1rem;
-    	overflow-y: auto;
-    	}
-    	
-    	.message-container {
-    	display: flex;
-    	flex-direction: column;
-    	align-items: flex-start;
-    	margin-bottom: 1rem;
-    	}
-    	
-    	.message-info {
-    	font-size: 0.8rem;
-    	margin-bottom: 0.2rem;
-    	}
-    	
-    	.message-content {
-    	background-color: #f4f4f4;
-    	border-radius: 5px;
-    	padding: 0.5rem;
-    	}
-    	
-    	#chat-form {
-    	display: flex;
-    	justify-content: center;
-    	align-items: center;
-    	width: 100%;
-    	padding: 1rem;
-    	background-color: #f4f4f4;
-    	border-top: 1px solid #333;
-    	}
-    	
-    	#message-input {
-    	flex: 1;
-    	padding: 0.5rem;
-    	border-radius: 5px;
-    	border: none;
-    	margin-right: 1rem;
-    	}
-    	
-    	button[type="submit"] {
-    	padding: 0.5rem 1rem;
-    	background-color: #333;
-    	color: #fff;
-    	border: none;
-    	border-radius: 5px;
-    	cursor: pointer;
-    	}
-    	
-    	button[type="submit"]:hover {
-    	background-color: #555;
-    	}
-    	@media only screen and (min-width: 601px) {
-    	#chat {
-    	display: flex;
-    	flex-direction: row;
-    	}
-    	#chat-display {
-    	width: 70%;
-    	}
-    	#chat-form {
-    	width: 30%;
-    	}
-    	}
-    	.message {
-    	border: 2px solid #ddd;
-    	border-radius: 0px 50px 50px 60px;
-    	margin-bottom: 10px;
-    	padding: 10px;
-    	animation: color-cycle 26s infinite;
-    	}
-    	@keyframes color-cycle {
-    	0% { background-color: rgba(244,55,46,0.5); }
-    	50% { background-color: rgba(44,155,46,0.5); }
-    	100% { background-color: rgba(244,55,146,0.5); }
-    	}
-    	#chat-form {
-    	display: flex;
-    	justify-content: center;
-    	align-items: center;
-    	width: 100%;
-    	padding: 1rem;
-    	background-color: #f4f4f4;
-    	border-top: 1px solid #333;
-    
-    	}
-    	
-    	#chat-message {
-    	flex: 1;
-    	padding: 0.5rem;
-    	border-radius: 5px;
-    	border: none;
-    	margin-right: 1rem;
-    	}
-    </style>
-  </head>
-  <body>
-  <section id="chat">
-    <div id="chat-container">
-      <div id="chat-header">
-        <h1>Chat Room</h1>
-      </div>
-      <div id="chat-display"></div>
-      <form id="chat-form">
-        <input type="text" id="message-input" id="chat-message" placeholder="Type your message" />
-        <button type="submit">Send</button>
-      </form>
-      
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Responsive Website</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add your own stylesheets or additional CSS files here -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .welcome-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .welcome-img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .welcome-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .welcome-description {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .btn-next {
+      background-color: #25D366;
+      color: #fff;
+      border-color: #25D366;
+    }
+  </style>
+  <style>
+    /* Add your custom styles here */
+    .active {
+      color: red;
+      border: 2px solid black;
+      border-radius: 25%;
+      background-color: rgba(230, 45, 56, 0.4);
+    }
+
+    .fixed-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 5px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .list-inline {
+      display: flex;
+      justify-content: center;
+    }
+
+    .list-inline li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 22px;
+      cursor: pointer;
+    }
+
+    .list-inline li span {
+      margin-top:2px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .logo {
+      font-size: 30px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav style="background-color: blue;" class="navbar navbar-expand-lg navbar-dark ">
+    <div  class="container">
+      <a class="navbar-brand" href="/">Parprofilio</a>
+    <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>-->
     </div>
-  </section>
-    <!-- Include jQuery and Bootstrap JS -->
-     <script >
-     
-     if (localStorage.getItem('sufev')) {
-     // if it is empty, do nothing
-     window.location.href = 'user.html';
-     } else {
-     // if it is not empty, redirect to the second page
-     
-     }
-     
-     
-     // Initialize Firebase
-     var config = {
-     aapiKey: "AIzaSyAy51n8WrsAy8R-xbXNanqL9AHQFPtuiZY",
-     authDomain: "sufev7852.firebaseapp.com",
-     databaseURL: "https://sufev7852-default-rtdb.firebaseio.com",
-     projectId: "sufev7852",
-     storageBucket: "sufev7852.appspot.com",
-     messagingSenderId: "733657119988"
-     };
-     firebase.initializeApp(config);
-     
-     // Get a reference to the Firebase database
-     var database = firebase.database();
-     
-     // Get a reference to the "messages" collection in the database
-     var messagesRef = database.ref("messages");
-     
-     // Listen for new messages and add them to the chat display
-     messagesRef.orderByChild("timestamp").on("child_added", function(snapshot) {
-     var message = snapshot.val();
-     var messageDisplay = "<div class='message'><p><strong>" + message.name + "</strong> (" + formatDate(new Date(message.timestamp)) + "):<br> " + message.text + "</p></div>";
-     document.getElementById("chat-display").innerHTML += messageDisplay;
-     });
-     
-     // Handle the form submission to add a new chat message
-     document.getElementById("chat-form").addEventListener("submit", function(event) {
-     event.preventDefault();
-     var message = document.getElementById("chat-message").value;
-     if (message) {
-     messagesRef.push({
-     name: localStorage.getItem('sufev'),
-     text: message,
-     timestamp: firebase.database.ServerValue.TIMESTAMP
-     });
-     document.getElementById("chat-message").value = "";
-     
-     }
-     
-     });
-     
-     // Format a date as a string (e.g. "3:30 PM on February 17, 2023")
-     function formatDate(date) {
-     var hours = date.getHours() % 12 || 12;
-     var minutes = date.getMinutes();
-     var ampm = hours >= 12 ? "PM" : "AM";
-     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-     var monthIndex = date.getMonth();
-     var day = date.getDate();
-     var year = date.getFullYear();
-     return hours + ":" + (minutes < 10 ? "0" : "") + minutes + " " + ampm + " on " + monthNames[monthIndex] + " " + day + ", " + year;
-     }
+  </nav>
+  
+  
+   <div class="container">
+    <div class="welcome-container">
+      <img src=" https://raw.githubusercontent.com/alekhakumarswain/Techbeen/main/Img/Health.gif " alt="Logo" class="welcome-img">
+      <h1 class="welcome-title">Welcome to My Profile</h1>
+      <p class="welcome-description">Thank you for visiting! Here you will find a glimpse into my world. I am excited to share my passions, experiences, and interests with you. Feel free to explore and discover more about me. I hope you enjoy your time here and find it engaging and insightful. If you have any questions or would like to connect, please don't hesitate to reach out. Welcome once again, and I look forward to connecting with you!.</p>
+      <button type="button" class="btn btn-next btn-block">Next</button>
+    </div>
+  </div>
+  
+  
+  <div class="fixed-bottom">
+    <ul class="list-inline image-name">
+      <li id="a1">
+        <span class="logo"><i class="fas fa-project-diagram"></i></span>
+        <span>Project</span>
+      </li>
+      <li id="a2">
+        <span class="logo"><i class="fas fa-address-book"></i></span>
+        <span>Contact</span>
+      </li>
+      <li id="a3">
+        <span class="logo"><i class="fas fa-home"></i></span>
+        <span>Home</span>
+      </li>
+      <li id="a4">
+        <span class="logo"><i class="fas fa-clipboard-check"></i></span>
+        <span>Skill</span>
+      </li>
+      <li id="a5">
+        <span class="logo"><i class="fas fa-certificate"></i></span>
+        <span>Certificate</span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script>
+    // Get all the list items
+    var listItems = document.querySelectorAll(".image-name li");
+
+    // Add click event listener to each list item
+    listItems.forEach(function(item) {
+          item.addEventListener("click", function() {
+                // Remove "active" class from all list items
+                listItems.forEach(function(li) {
+                  li.classList.remove("active");
+                    });
+                        // Add "active" class to the clicked list item
+        this.classList.add("active");
+          });
+        });
+        
+      </script>
+        <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    // Add event listener to the next button
+    var nextButton = document.querySelector('.btn-next');
+    nextButton.addEventListener('click', function() {
+      // Redirect to the login page
+      window.location.href = 'login.html';
+    });
+    
+    const textElement = document.querySelector('.welcome-description');
+const text = textElement.innerHTML;
+textElement.innerHTML = '';
+let i = 0;
+(function type() {textElement.innerHTML += text.charAt(i++), i < text.length && setTimeout(type, 70)})();
+    type();
     </script>
-  </body>
+</body>
 </html>
