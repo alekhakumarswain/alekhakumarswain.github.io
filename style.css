@@ -1,0 +1,111 @@
+.bg-dark{
+
+  background-color: blue;
+
+}
+
+.fixed-bottom {
+
+  position: fixed;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 100%;
+
+  background-color: #f9b9f5;
+
+  padding: 0px;
+
+  display: flex;
+
+  justify-content: center;
+
+}
+
+.image-name li {
+
+  display: inline-block;
+
+  margin-right: 1px;
+
+  padding: 3px;
+
+}
+
+.logo {
+
+  font-size: 24px;
+
+  margin-bottom:1px;
+
+  margin-left:3px;
+
+}
+
+.logo i {
+
+  /* Adjust the color if needed */
+
+  color: #000;
+
+}
+
+li:hover {
+
+  background-color: #f8f9fa;
+
+  cursor: pointer;
+
+  
+
+}
+
+.welcome-description{
+
+  overflow: hidden; /* Hide overflow to create typing effect */
+
+      
+
+      border-right: 2px solid; /* Add a blinking cursor effect */
+
+      animation: typing 25s steps(70, end), blink-caret 0.85s step-end infinite;
+
+    }
+
+    
+
+    @keyframes typing {
+
+      from {
+
+        width: 0; /* Start with no width */
+
+      }
+
+      to {
+
+        width: 100%; /* Increase width to show full text */
+
+      }
+
+    }
+
+    
+
+    @keyframes blink-caret {
+
+      from, to {
+
+        border-color: transparent; /* Hide the cursor */
+
+      }
+
+      50% {
+
+        border-color: #333; /* Show the cursor */
+
+      }
+
+    }
