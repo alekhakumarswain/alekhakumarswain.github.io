@@ -93,6 +93,15 @@
       font-size: 30px;
       color: #333;
     }
+    video {
+
+      width: 100%; /* Adjust the width as needed */
+
+      height: auto; /* Adjust the height as needed */
+
+      
+
+    }
   </style>
 </head>
 
@@ -126,7 +135,27 @@
   
    <div class="container">
     <div class="welcome-container">
-      <img src=" https://raw.githubusercontent.com/alekhakumarswain/Techbeen/main/Img/Health.gif " alt="Logo" class="welcome-img">
+      
+      <video id="myVideo" src="https://github.com/alekhakumarswain/alekhakumarswain.github.io/raw/main/Video/InShot_20230530_085614579.mp4"  >
+
+    Your browser does not support the video tag.
+
+     </video>
+
+     
+
+     <script>
+
+    window.onload = function() {
+
+      var video = document.getElementById('myVideo');
+
+      video.play();
+
+    };
+
+      </script>
+      
       <h1 class="welcome-title">Welcome to My Profile</h1>
       <p class="welcome-description">Thank you for visiting! Here you will find a glimpse into my world. I am excited to share my passions, experiences, and interests with you. Feel free to explore and discover more about me. I hope you enjoy your time here and find it engaging and insightful. If you have any questions or would like to connect, please don't hesitate to reach out. Welcome once again, and I look forward to connecting with you!.</p>
       <button type="button" class="btn btn-next btn-block">Next</button>
