@@ -30,13 +30,13 @@
 						<a style="text-decoration:none;" href=" https://twitter.com/Alekha6868swain " >
 							<div class="icon twitter"></div>
 						</a>
-						<a style="text-decoration:none;" href=" https://www.instagram.com/alekha_kumar_swain_raja_6868/ " >						
-							<div class="icon instagram"></div>
+						<a style="text-decoration:none;" href=" https://www.instagram.com/alekhakumarswain_raja/ " >						
+							<div class="icon instagram"></div> 
 						</a>
 						<a style="text-decoration:none;" href=" https://www.linkedin.com/in/alekhakumar " >
 							<div class="icon linkedin"></div>
 						</a>
-						<a style="text-decoration:none;" href=" https://api.whatsapp.com/send?phone=8018226416 " >
+						<a style="text-decoration:none;" href=" https://api.whatsapp.com/send?phone=918018226416 " >
 							<div class="icon whatsapp"></div>
 						</a>
 			<a href="https://alekhakumarswain.github.io" class="popup-alert-btn submit">VISIT NOW</a>
