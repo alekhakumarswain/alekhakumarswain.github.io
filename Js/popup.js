@@ -23,7 +23,7 @@
 						SWAIN 
 				</b>
 			</b>				
-			<img class="banner"  src="https://alekhakumarswain.github.io/flex.gif">
+			<img class="banner"  src="https://alekhakumarswain.github.io/logofile.png">
 			<a style="text-decoration:none;" href=" https://www.facebook.com/swainraja.kumaralekha " >
 							<div class="icon facebook"></div>
 						</a>
