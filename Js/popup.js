@@ -18,7 +18,7 @@
 				</b>
 				<b 						 
 					style="font-family: Tahoma, Verdana, sans-serif;
-						color:rgba(22,231,32,255)
+						color:rgba(222,231,32,255)
 						"> 
 						SWAIN 
 				</b>
