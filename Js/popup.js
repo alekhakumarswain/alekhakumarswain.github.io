@@ -18,7 +18,7 @@
 				</b>
 				<b 						 
 					style="font-family: Tahoma, Verdana, sans-serif;
-						color:rgba(222,231,32,255)
+						color:rgba(22,231,32,255)
 						"> 
 						SWAIN 
 				</b>
@@ -27,10 +27,10 @@
 			<a style="text-decoration:none;" href=" https://www.facebook.com/swainraja.kumaralekha " >
 							<div class="icon facebook"></div>
 						</a>
-						<a style="text-decoration:none;" href=" https://twitter.com/Alekha6868swain " >
+						<a style="text-decoration:none;" href=" https://twitter.com/Alekha5258swain " >
 							<div class="icon twitter"></div>
 						</a>
-						<a style="text-decoration:none;" href=" https://www.instagram.com/alekhakumarswain_raja/ " >						
+						<a style="text-decoration:none;" href=" https://www.instagram.com/alekhakumarswainraja/ " >						
 							<div class="icon instagram"></div> 
 						</a>
 						<a style="text-decoration:none;" href=" https://www.linkedin.com/in/alekhakumar " >
@@ -52,7 +52,8 @@
 	document.head.append(element);
 	}			
         createLinkElementAndAppendInHead('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');						
-	createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/css/popup.css ');
+	// createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/css/popup.css ');
+    createLinkElementAndAppendInHead('popup.css ');
 	createLinkElementAndAppendInHead(' https://alekhakumarswain.github.io/css/Icon.css ');
 	document.body.insertAdjacentHTML('afterbegin', DOMString)				
 	const btnOk = document.querySelector('.close');
