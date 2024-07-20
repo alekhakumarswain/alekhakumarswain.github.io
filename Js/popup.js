@@ -39,7 +39,7 @@
 						<a style="text-decoration:none;" href=" https://api.whatsapp.com/send?phone=918018226416 " >
 							<div class="icon whatsapp"></div>
 						</a>
-			<a href="https://alekhakumarswain.github.io" class="popup-alert-btn submit">VISIT NOW</a>
+			<a href="https://alekhakumarswain.web.app" class="popup-alert-btn submit">VISIT NOW</a>
 			<a href="#" class="popup-alert-btn close">SKIP NOW</a>
 		
 		</div>
