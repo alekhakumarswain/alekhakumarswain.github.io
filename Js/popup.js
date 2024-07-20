@@ -52,9 +52,8 @@
 	document.head.append(element);
 	}			
         createLinkElementAndAppendInHead('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');						
-	// createLinkElementAndAppendInHead('https://alekhakumarswain.github.io/css/popup.css ');
-    createLinkElementAndAppendInHead('css/popup.css ');
-	createLinkElementAndAppendInHead(' https://alekhakumarswain.github.io/css/Icon.css ');
+    	createLinkElementAndAppendInHead('css/popup.css');
+	createLinkElementAndAppendInHead('css/Icon.css');
 	document.body.insertAdjacentHTML('afterbegin', DOMString)				
 	const btnOk = document.querySelector('.close');
 	btnOk.addEventListener('click', (e) => {
